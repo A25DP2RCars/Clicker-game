@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<title>Car Clicker FINAL FIX</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🚗 CAR CLICKER FINAL 💰</h1>
+
+<div id="game">
+
+  <div id="leftCars"></div>
+
+  <div id="center">
+
+    <div id="euro">€</div>
+
+    <h2>💰 Nauda: <span id="money">0</span></h2>
+    <h2>💎 Dimanti: <span id="diamonds">0</span></h2>
+
+    <hr>
+
+    <h2>💱 Exchange</h2>
+
+<button onclick="buyDiamonds(1)">
+1💎 = 100€
+</button>
+
+<button onclick="buyDiamonds(5)">
+5💎 = 1000€
+</button>
+
+<button onclick="buyDiamonds(10)">
+10💎 = 2500€
+</button>
+
+    <hr>
+
+    <h2>🚗 Car Shop</h2>
+
+    <div id="shop"></div>
+
+    <hr>
+
+    <button onclick="buyKey()">🔑 Win KEY (100,000,000,000,000)</button>
+
+  </div>
+
+  <div id="rightCars"></div>
+
+</div>
+
+<div id="win">
+  <h1>🏆 YOU WIN!</h1>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
