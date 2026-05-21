@@ -69,7 +69,8 @@ function buyCar(type) {
         div.innerText = type.toUpperCase();
 
         garage.appendChild(div);
-
+carsBought++;
+updateQuests();
         update();
 
     } else {
@@ -151,7 +152,8 @@ function update() {
     document.getElementById("prestigeNeed").innerText = prestigeNeed;
 
     const btn = document.getElementById("upgradeBtn");
-    if (btn) btn.innerText = `Upgrade (${500 * prestigeMultiplier}€)`;
+   if (btn) btn.innerText = `Upgrade (${500 * prestigeMultiplier}€)`;
+    updateQuests();
 }
 let quests = [
   {text:"Earn 100€", goal:100, reward:5, type:"money", done:false},
@@ -165,8 +167,40 @@ let quests = [
   {text:"Reach 100k money", goal:100000, reward:50, type:"money", done:false},
   {text:"Prestige once", goal:1, reward:100, type:"prestige", done:false}
 ];
+function updateQuests(){
 
+    const qbox = document.getElementById("quest");
+    qbox.innerHTML = "";
+
+    quests.forEach(q => {
+
+        let progress = false;
+
+        if(q.type === "money") progress = money >= q.goal;
+        if(q.type === "diamonds") progress = diamonds >= q.goal;
+        if(q.type === "cars") progress = carsBought >= q.goal;
+        if(q.type === "prestige") progress = prestige >= q.goal;
+
+        if(progress && !q.done){
+            q.done = true;
+
+            diamonds += q.reward;
+            alert("Quest completed! +"+q.reward+" 💎");
+        }
+
+        let div = document.createElement("div");
+        div.className = "shopItem";
+
+        div.innerHTML = `
+            ${q.text}<br>
+            🎁 ${q.reward} 💎 ${q.done ? "✅ DONE" : ""}
+        `;
+
+        qbox.appendChild(div);
+    });
+}
 let carsBought = 0;
 // 🚀 START
+updateQuests();
 createShop();
 update();
