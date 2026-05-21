@@ -223,14 +223,3 @@ button{
     50%{background:gold;}
     100%{background:black;}
 }
-body{
-    font-family: Arial;
-    color: white;
-    text-align: center;
-
-    background-image: url("https://w0.peakpx.com/wallpaper/821/167/HD-wallpaper-project-cars-race-racing-video-game-game-water-gaming-car-auto-rain-realistic.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
