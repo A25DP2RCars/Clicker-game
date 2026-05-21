@@ -152,3 +152,45 @@ button{
     border-radius:6px;
     cursor:pointer;
 }
+.container{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+}
+
+.box{
+    width:280px;
+    height:300px;
+    background:#222;
+    border-radius:10px;
+    padding:10px;
+
+    overflow-y:auto;   /* vertikālais scroll */
+    overflow-x:hidden; /* 🔥 svarīgi */
+}
+
+/* 🔥 FIX: lai elementi nepārplīst ārā */
+.shopItem,.car{
+    background:#333;
+    margin:8px 0;
+    padding:8px;
+    border-radius:8px;
+
+    max-width:100%;   /* 🔥 neiziet ārā */
+    box-sizing:border-box;
+}
+
+/* 🔥 FIX text wrap */
+.shopItem h3{
+    margin:0;
+    word-break:break-word;
+}
+
+button{
+    margin:5px 0;
+    padding:8px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    max-width:100%;
+}
