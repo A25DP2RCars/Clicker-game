@@ -147,6 +147,38 @@ setInterval(()=>{
   update();
 },1000);
 
+function buyDiamonds(option){
+
+    let cost = 0;
+    let reward = 0;
+
+    if(option === 1){
+        cost = 50;
+        reward = 1;
+    }
+
+    if(option === 5){
+        cost = 400;
+        reward = 5;
+    }
+
+    if(option === 10){
+        cost = 700;
+        reward = 10;
+    }
+
+    if(money >= cost){
+
+        money -= cost;
+        diamonds += reward;
+
+        update();
+
+    } else {
+        alert("Nepietiek naudas!");
+    }
+}
+
 // START
 createShop();
 update();
