@@ -235,34 +235,7 @@ function darkMode(){
 
 }
 
-function saveGame(){
 
-    localStorage.setItem("money", money);
-    localStorage.setItem("diamonds", diamonds);
-    localStorage.setItem("clicks", totalClicks);
-    localStorage.setItem("clickPower", clickPower);
-    localStorage.setItem("income", incomePerSecond);
-
-}
-
-function loadGame(){
-
-    money =
-    Number(localStorage.getItem("money")) || 0;
-
-    diamonds =
-    Number(localStorage.getItem("diamonds")) || 0;
-
-    totalClicks =
-    Number(localStorage.getItem("clicks")) || 0;
-
-    clickPower =
-    Number(localStorage.getItem("clickPower")) || 1;
-
-    incomePerSecond =
-    Number(localStorage.getItem("income")) || 0;
-
-}
 document.getElementById("upgradeBtn").innerText =
 `🚀 Upgrade Click (${upgradePrice}€)`;
 
