@@ -1,245 +1,159 @@
-let upgradePrice = 500;
 let money = 0;
 let diamonds = 0;
-let totalClicks = 0;
+
 let clickPower = 1;
 let incomePerSecond = 0;
 
+let upgradePrice = 500;
+
+// 🏪 DOM
 const euro = document.getElementById("euro");
 const shop = document.getElementById("shop");
-const carsDiv = document.getElementById("cars");
-const win = document.getElementById("win");
+const garage = document.getElementById("cars");
 
+// 🚗 cars
 const cars = {
-
-    rust:{
-        price:1,
-        income:10,
-        color:"brown"
-    },
-
-    audi:{
-        price:5,
-        income:50,
-        color:"silver"
-    },
-
-    bmw:{
-        price:10,
-        income:200,
-        color:"skyblue"
-    },
-
-    porsche:{
-        price:20,
-        income:1000,
-        color:"yellow"
-    },
-
-    lambo:{
-        price:50,
-        income:10000,
-        color:"lime"
-    },
-
-    pagani:{
-        price:100,
-        income:100000,
-        color:"violet"
-    }
-
+    rust:   { price: 1, income: 10, color: "brown" },
+    audi:   { price: 5, income: 50, color: "silver" },
+    bmw:    { price: 10, income: 200, color: "blue" },
+    porsche:{ price: 20, income: 1000, color: "yellow" },
+    lambo:  { price: 50, income: 10000, color: "lime" },
+    pagani: { price: 100, income: 100000, color: "purple" }
 };
 
-function update(){
+// 🖱 CLICK MONEY
+euro.onclick = () => {
+    money += clickPower;
+    update();
+};
 
-    document.getElementById("money").innerText =
-    Math.floor(money);
+// 🏪 CREATE SHOP
+function createShop() {
 
-    document.getElementById("diamonds").innerText =
-    diamonds;
+    shop.innerHTML = "";
 
-    document.getElementById("clicks").innerText =
-    totalClicks;
+    for (let key in cars) {
 
+        const c = cars[key];
+
+        const div = document.createElement("div");
+        div.className = "shopItem";
+
+        div.innerHTML = `
+            <h3>${key.toUpperCase()}</h3>
+            <p>💎 Price: ${c.price}</p>
+            <p>💰 Income: ${c.income}/s</p>
+            <button onclick="buyCar('${key}')">BUY</button>
+        `;
+
+        shop.appendChild(div);
+    }
 }
 
+// 🚗 BUY CAR
+function buyCar(type) {
 
-euro.onclick = () => {
+    const car = cars[type];
 
-    money += clickPower;
+    if (diamonds >= car.price) {
 
-    totalClicks++;
+        diamonds -= car.price;
+        incomePerSecond += car.income;
 
+        const div = document.createElement("div");
+        div.className = "car";
+        div.style.background = car.color;
+        div.innerText = type.toUpperCase();
 
-    update();
+        garage.appendChild(div);
 
-};
+        update();
 
-function buyDiamonds(option){
+    } else {
+        alert("Nepietiek dimantu!");
+    }
+}
+
+// 💎 BUY DIAMONDS
+function buyDiamonds(option) {
 
     let cost = 0;
     let reward = 0;
 
-    if(option === 1){
-
+    if (option === 1) {
         cost = 50;
         reward = 1;
-
     }
 
-    if(option === 5){
-
+    if (option === 5) {
         cost = 400;
         reward = 5;
-
     }
 
-    if(option === 10){
-
+    if (option === 10) {
         cost = 700;
         reward = 10;
-
     }
 
-    if(money >= cost){
-
+    if (money >= cost) {
         money -= cost;
-
         diamonds += reward;
-
         update();
-
-    }
-    else{
-
+    } else {
         alert("Nepietiek naudas!");
-
     }
-
 }
 
-function createShop(){
+// 🚀 CLICK UPGRADE
+function buyUpgrade() {
 
-    for(let key in cars){
-
-        const car = cars[key];
-
-        const div = document.createElement("div");
-
-        div.className = "shopItem";
-
-        div.innerHTML = `
-
-        <h3>${key.toUpperCase()}</h3>
-
-        <p>💎 Price: ${car.price}</p>
-
-        <p>💰 Income: ${car.income}/s</p>
-
-        <button class="buyBtn"
-        onclick="buyCar('${key}')">
-
-        BUY
-
-        </button>
-
-        `;
-
-        shop.appendChild(div);
-
-    }
-
-}
-
-function buyCar(type){
-
-    const car = cars[type];
-
-    if(diamonds >= car.price){
-
-        diamonds -= car.price;
-
-        incomePerSecond += car.income;
-
-        const div = document.createElement("div");
-
-        div.className = "car";
-
-        div.style.background = car.color;
-
-        div.innerText = type.toUpperCase();
-
-        carsDiv.appendChild(div);
-
-        update();
-
-    }
-    else{
-
-        alert("Nepietiek dimantu!");
-
-    }
-
-}
-
-setInterval(() => {
-
-    money += incomePerSecond;
-
-    update();
-
-},1000);
-
-function buyUpgrade(){
-
-    if(money >= upgradePrice){
+    if (money >= upgradePrice) {
 
         money -= upgradePrice;
-
         clickPower *= 2;
 
-        upgradePrice =
-        Math.floor(upgradePrice * 1.8);
-
-        alert("🚀 Click upgraded!");
+        upgradePrice = Math.floor(upgradePrice * 1.8);
 
         update();
 
+    } else {
+        alert("Nepietiek naudas!");
     }
-    else{
-
-        alert("Need more money!");
-
-    }
-
 }
 
-function buyKey(){
+// 💰 PASSIVE INCOME
+setInterval(() => {
+    money += incomePerSecond;
+    update();
+}, 1000);
 
-    if(money >= 100000000){
+// 🔄 UPDATE UI
+function update() {
 
-        win.style.display = "block";
+    document.getElementById("money").innerText = Math.floor(money);
+    document.getElementById("diamonds").innerText = diamonds;
 
+    const btn = document.getElementById("upgradeBtn");
+    if (btn) {
+        btn.innerText = `Upgrade Click (${upgradePrice}€)`;
     }
-    else{
-
-        alert("Need 100,000,000€!");
-
-    }
-
 }
 
-function darkMode(){
-
+// 🌙 DARK MODE
+function darkMode() {
     document.body.classList.toggle("dark");
-
 }
 
+// 💾 SAVE (optional)
+setInterval(() => {
+    localStorage.setItem("money", money);
+    localStorage.setItem("diamonds", diamonds);
+}, 3000);
 
-document.getElementById("upgradeBtn").innerText =
-`🚀 Upgrade Click (${upgradePrice}€)`;
+// 📥 LOAD
+money = Number(localStorage.getItem("money")) || 0;
+diamonds = Number(localStorage.getItem("diamonds")) || 0;
 
-
+// 🚀 START
 createShop();
-
 update();
