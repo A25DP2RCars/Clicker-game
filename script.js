@@ -231,7 +231,37 @@ function updateQuests(){
     });
 }
 let carsBought = 0;
+let rewardPlayed = false;
+
+function checkAllQuests(){
+
+    let allDone = quests.every(q => q.done);
+
+    if(allDone && !rewardPlayed){
+
+        rewardPlayed = true;
+
+        // SOUND
+        document.getElementById("winSound").play();
+
+        // ANIMATION TEXT
+        let box = document.getElementById("questComplete");
+        box.style.display = "block";
+
+        // SCREEN FLASH
+        document.body.classList.add("flash");
+
+        setTimeout(()=>{
+            document.body.classList.remove("flash");
+        },1000);
+
+        setTimeout(()=>{
+            box.style.display = "none";
+        },3000);
+    }
+}
 // 🚀 START
 updateQuests();
 createShop();
 update();
+checkAllQuests();
