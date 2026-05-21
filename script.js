@@ -146,6 +146,10 @@ setInterval(()=>{
   money += income;
   update();
 },1000);
+function update(){
+    document.getElementById("money").innerText = Math.floor(money);
+    document.getElementById("diamonds").innerText = diamonds;
+}
 
 function buyDiamonds(option){
 
