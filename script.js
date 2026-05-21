@@ -239,9 +239,6 @@ function darkMode(){
 document.getElementById("upgradeBtn").innerText =
 `🚀 Upgrade Click (${upgradePrice}€)`;
 
-setInterval(saveGame,2000);
-
-loadGame();
 
 createShop();
 
