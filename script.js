@@ -1,7 +1,6 @@
 let upgradePrice = 500;
 let money = 0;
 let diamonds = 0;
-let level = 1;
 let totalClicks = 0;
 let clickPower = 1;
 let incomePerSecond = 0;
@@ -59,9 +58,6 @@ function update(){
     document.getElementById("diamonds").innerText =
     diamonds;
 
-    document.getElementById("level").innerText =
-    level;
-
     document.getElementById("clicks").innerText =
     totalClicks;
 
@@ -74,7 +70,6 @@ euro.onclick = () => {
 
     totalClicks++;
 
-    checkLevel();
 
     update();
 
@@ -191,8 +186,6 @@ setInterval(() => {
 
     money += incomePerSecond;
 
-    checkLevel();
-
     update();
 
 },1000);
@@ -246,7 +239,6 @@ function saveGame(){
 
     localStorage.setItem("money", money);
     localStorage.setItem("diamonds", diamonds);
-    localStorage.setItem("level", level);
     localStorage.setItem("clicks", totalClicks);
     localStorage.setItem("clickPower", clickPower);
     localStorage.setItem("income", incomePerSecond);
@@ -260,9 +252,6 @@ function loadGame(){
 
     diamonds =
     Number(localStorage.getItem("diamonds")) || 0;
-
-    level =
-    Number(localStorage.getItem("level")) || 1;
 
     totalClicks =
     Number(localStorage.getItem("clicks")) || 0;
