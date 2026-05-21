@@ -173,7 +173,12 @@ function update() {
 function darkMode() {
     document.body.classList.toggle("dark");
 }
+const euro = document.getElementById("euro");
 
+euro.onclick = () => {
+    money += clickPower;
+    update();
+};
 // 🚀 START GAME
 createShop();
 update();
