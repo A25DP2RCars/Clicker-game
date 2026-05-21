@@ -69,7 +69,8 @@ function buyCar(type) {
         div.innerText = type.toUpperCase();
 
         garage.appendChild(div);
-carsBought++;
+        updateQuests();
+checkAllQuests();
         update();
 
     } else {
