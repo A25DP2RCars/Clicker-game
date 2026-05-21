@@ -5,18 +5,19 @@ let clickPower = 1;
 let incomePerSecond = 0;
 
 let upgradePrice = 500;
+let hasKey = false;
 
-// 🏪 DOM
+// 🧠 DOM
 const euro = document.getElementById("euro");
 const shop = document.getElementById("shop");
 const garage = document.getElementById("cars");
 
-// 🚗 cars
+// 🚗 CARS
 const cars = {
     rust:   { price: 1, income: 10, color: "brown" },
     audi:   { price: 5, income: 50, color: "silver" },
     bmw:    { price: 10, income: 200, color: "blue" },
-    porsche:{ price: 20, income: 1000, color: "yellow" },
+    porsche:{ price: 20, income: 1000, color: "gold" },
     lambo:  { price: 50, income: 10000, color: "lime" },
     pagani: { price: 100, income: 100000, color: "purple" }
 };
@@ -27,8 +28,10 @@ euro.onclick = () => {
     update();
 };
 
-// 🏪 CREATE SHOP
+// 🏪 SHOP
 function createShop() {
+
+    if (!shop) return;
 
     shop.innerHTML = "";
 
@@ -104,7 +107,7 @@ function buyDiamonds(option) {
     }
 }
 
-// 🚀 CLICK UPGRADE
+// 🚀 UPGRADE CLICK
 function buyUpgrade() {
 
     if (money >= upgradePrice) {
@@ -113,6 +116,30 @@ function buyUpgrade() {
         clickPower *= 2;
 
         upgradePrice = Math.floor(upgradePrice * 1.8);
+
+        update();
+
+    } else {
+        alert("Nepietiek naudas!");
+    }
+}
+
+// 🔑 GOLDEN KEY (WIN)
+function buyKey() {
+
+    if (hasKey) {
+        alert("Tu jau uzvarēji!");
+        return;
+    }
+
+    if (money >= 1000000) {
+
+        money -= 1000000;
+        hasKey = true;
+
+        document.getElementById("win").style.display = "block";
+
+        alert("🏆 YOU WON!");
 
         update();
 
@@ -130,8 +157,11 @@ setInterval(() => {
 // 🔄 UPDATE UI
 function update() {
 
-    document.getElementById("money").innerText = Math.floor(money);
-    document.getElementById("diamonds").innerText = diamonds;
+    const moneyEl = document.getElementById("money");
+    const diamondsEl = document.getElementById("diamonds");
+
+    if (moneyEl) moneyEl.innerText = Math.floor(money);
+    if (diamondsEl) diamondsEl.innerText = diamonds;
 
     const btn = document.getElementById("upgradeBtn");
     if (btn) {
@@ -144,16 +174,6 @@ function darkMode() {
     document.body.classList.toggle("dark");
 }
 
-// 💾 SAVE (optional)
-setInterval(() => {
-    localStorage.setItem("money", money);
-    localStorage.setItem("diamonds", diamonds);
-}, 3000);
-
-// 📥 LOAD
-money = Number(localStorage.getItem("money")) || 0;
-diamonds = Number(localStorage.getItem("diamonds")) || 0;
-
-// 🚀 START
+// 🚀 START GAME
 createShop();
 update();
