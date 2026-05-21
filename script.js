@@ -67,20 +67,6 @@ function update(){
 
 }
 
-function checkLevel(){
-
-    let newLevel =
-    Math.floor(money / 50000) + 1;
-
-    if(newLevel > level){
-
-        level = newLevel;
-
-        alert("⭐ Level Up!");
-
-    }
-
-}
 
 euro.onclick = () => {
 
