@@ -1,61 +1,108 @@
 <!DOCTYPE html>
 <html lang="lv">
 <head>
-<meta charset="UTF-8">
-<title>Car Clicker FINAL FIX</title>
-<link rel="stylesheet" href="style.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Car Clicker Tycoon</title>
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
-<h1>🚗 CAR CLICKER FINAL 💰</h1>
+<h1>🚗 Car Clicker Tycoon</h1>
 
-<div id="game">
+<div class="topbar">
 
-  <div id="leftCars"></div>
+    <div class="stat">
+        💰 Money:
+        <span id="money">0</span>
+    </div>
 
-  <div id="center">
+    <div class="stat">
+        💎 Diamonds:
+        <span id="diamonds">0</span>
+    </div>
 
-    <div id="euro">€</div>
+    <div class="stat">
+        ⭐ Level:
+        <span id="level">1</span>
+    </div>
 
-    <h2>💰 Nauda: <span id="money">0</span></h2>
-    <h2>💎 Dimanti: <span id="diamonds">0</span></h2>
+    <div class="stat">
+        🖱 Clicks:
+        <span id="clicks">0</span>
+    </div>
 
-    <hr>
+</div>
 
-    <h2>💱 Exchange</h2>
+<div id="euro">💶</div>
 
-<button onclick="buyDiamonds(1)">
-1💎 = 100€
+<br>
+
+<button class="upgradeBtn" onclick="buyUpgrade()">
+    Upgrade Click Power (500€)
 </button>
 
-<button onclick="buyDiamonds(5)">
-5💎 = 1000€
+<button class="darkBtn" onclick="darkMode()">
+    🌙 Dark Mode
 </button>
 
-<button onclick="buyDiamonds(10)">
-10💎 = 2500€
-</button>
+<div class="container">
 
-    <hr>
+    <div class="panel">
 
-    <h2>🚗 Car Shop</h2>
+        <h2>🏪 Car Shop</h2>
 
-    <div id="shop"></div>
+        <div id="shop"></div>
 
-    <hr>
+    </div>
 
-    <button onclick="buyKey()">🔑 Win KEY (100,000,000,000,000)</button>
+    <div class="panel">
 
-  </div>
+        <h2>🚗 Your Cars</h2>
 
-  <div id="rightCars"></div>
+        <div class="carArea" id="cars"></div>
+
+    </div>
+
+</div>
+
+<div class="diamondSection">
+
+    <h2>💎 Buy Diamonds</h2>
+
+    <button onclick="buyDiamonds(1)">
+        1💎 = 100€
+    </button>
+
+    <button onclick="buyDiamonds(5)">
+        5💎 = 1000€
+    </button>
+
+    <button onclick="buyDiamonds(10)">
+        10💎 = 2500€
+    </button>
+
+</div>
+
+<div class="winSection">
+
+    <button onclick="buyKey()">
+        🔑 Buy Golden Key
+    </button>
 
 </div>
 
 <div id="win">
-  <h1>🏆 YOU WIN!</h1>
+
+    🏆 YOU WON THE GAME! 🏆
+
 </div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
