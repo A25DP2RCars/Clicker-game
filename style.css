@@ -223,3 +223,14 @@ button{
     50%{background:gold;}
     100%{background:black;}
 }
+body{
+    font-family: Arial;
+    color: white;
+    text-align: center;
+
+    background-image: url("https://chatgpt.com/s/m_6a0ef4169d408191ba34e0ca45be9dc3");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
