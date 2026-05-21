@@ -1,3 +1,4 @@
+let upgradePrice = 500;
 let money = 0;
 let diamonds = 0;
 let level = 1;
@@ -68,9 +69,14 @@ function update(){
 
 function checkLevel(){
 
-    if(money >= level * 1000){
+    let newLevel =
+    Math.floor(money / 1000) + 1;
 
-        level++;
+    if(newLevel > level){
+
+        level = newLevel;
+
+        alert("⭐ Level Up!");
 
     }
 
@@ -207,20 +213,23 @@ setInterval(() => {
 
 function buyUpgrade(){
 
-    if(money >= 500){
+    if(money >= upgradePrice){
 
-        money -= 500;
+        money -= upgradePrice;
 
         clickPower *= 2;
 
-        alert("Click power upgraded!");
+        upgradePrice =
+        Math.floor(upgradePrice * 1.8);
+
+        alert("🚀 Click upgraded!");
 
         update();
 
     }
     else{
 
-        alert("Need 500€!");
+        alert("Need more money!");
 
     }
 
