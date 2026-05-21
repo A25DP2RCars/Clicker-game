@@ -223,3 +223,14 @@ button{
     50%{background:gold;}
     100%{background:black;}
 }
+#euro{
+    font-size:60px;
+    cursor:pointer;
+    user-select:none;
+    transition:0.1s;
+}
+
+/* 🔥 click animation */
+#euro:active{
+    transform:scale(0.9);
+}
