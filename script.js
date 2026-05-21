@@ -69,12 +69,13 @@ function buyCar(type) {
         div.innerText = type.toUpperCase();
 
         garage.appendChild(div);
+       
         updateQuests();
 checkAllQuests();
         update();
 
     } else {
-        alert("Nepietiek dimantu!");
+         showPopup("🚗 Car bought!");
     }
 }
 
@@ -93,7 +94,7 @@ function buyDiamonds(option) {
         diamonds += reward;
         update();
     } else {
-        alert("Nepietiek naudas!");
+        showPopup("+5 💎 Diamonds", "deepskyblue");
     }
 }
 
@@ -130,10 +131,10 @@ function buyPrestige() {
 
         update();
 
-        alert("🏆 PRESTIGE DONE!");
+        showPopup("🏆 PRESTIGE ACTIVATED!", "gold");
 
     } else {
-        alert("Nepietiek naudas!");
+        showPopup("Nepietiek naudas");
     }
 }
 
@@ -258,6 +259,17 @@ function checkAllQuests(){
             box.style.display = "none";
         },3000);
     }
+}
+function showPopup(text, color = "gold") {
+    const box = document.getElementById("questComplete");
+
+    box.innerText = text;
+    box.style.background = color;
+    box.style.display = "block";
+
+    setTimeout(() => {
+        box.style.display = "none";
+    }, 2000);
 }
 // 🚀 START
 updateQuests();
