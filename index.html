@@ -1,55 +1,48 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<title>PRO TYCOON</title>
 <link rel="stylesheet" href="style.css">
-<div class="top">
-  <h1>🚗 Tycoon Game</h1>
-  <div class="panel">
-  <h2>💎 Diamond Shop</h2>
+</head>
 
-  <button onclick="buyDiamonds(1)">1 💎 = 50€</button><br><br>
-  <button onclick="buyDiamonds(5)">5 💎 = 400€</button><br><br>
-  <button onclick="buyDiamonds(10)">10 💎 = 700€</button>
+<body>
 
-</div>
-  <div class="panel">
-  <h2>🏆 Prestige</h2>
+<h1>🚗 PRO TYCOON</h1>
 
-  <p>Money needed: <span id="prestigeNeed">100000</span>€</p>
-  <p>Current prestige: <span id="prestige">0</span></p>
-
-  <button onclick="buyPrestige()">RESET / PRESTIGE</button>
-</div>
-
-  <div class="stats">
-    💰 Money: <span id="money">0</span> |
-    💎 Diamonds: <span id="diamonds">0</span> |
-    ⭐ Prestige: <span id="prestige">0</span>
-  </div>
+<div class="stats">
+  💰 Money: <span id="money">0</span> |
+  💎 Diamonds: <span id="diamonds">0</span> |
+  🏆 Prestige: <span id="prestige">0</span>
 </div>
 
 <div id="euro">💶 CLICK</div>
 
-<button onclick="buyUpgrade()" id="upgradeBtn">Upgrade (500€)</button>
+<button id="upgradeBtn" onclick="buyUpgrade()">Upgrade</button>
+<button onclick="buyPrestige()">🏆 PRESTIGE</button>
 
 <div class="container">
 
-  <div class="panel">
+  <div class="box">
     <h2>🏪 Shop</h2>
     <div id="shop"></div>
   </div>
 
-  <div class="panel">
-    <h2>📜 Quests</h2>
-    <div id="quest"></div>
-  </div>
-
-  <div class="panel">
+  <div class="box">
     <h2>🚗 Garage</h2>
     <div id="garage"></div>
   </div>
 
 </div>
 
-<button onclick="buyPrestige()">🏆 PRESTIGE RESET</button>
-
-<div id="win" style="display:none;">🏆 YOU WIN!</div>
+<div class="box">
+  <h2>💎 Diamonds Shop</h2>
+  <button onclick="buyDiamonds(1)">1 💎 = 50€</button>
+  <button onclick="buyDiamonds(5)">5 💎 = 400€</button>
+  <button onclick="buyDiamonds(10)">10 💎 = 700€</button>
+</div>
 
 <script src="script.js"></script>
+
+</body>
+</html>
