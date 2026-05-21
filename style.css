@@ -116,3 +116,39 @@ button{
     border-radius:8px;
     cursor:pointer;
 }
+body{
+    font-family: Arial;
+    background:#111;
+    color:white;
+    text-align:center;
+}
+
+.container{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+}
+
+.box{
+    width:280px;
+    height:300px;
+    background:#222;
+    border-radius:10px;
+    padding:10px;
+    overflow-y:auto; /* 🔥 scroll uzreiz */
+}
+
+.shopItem,.car{
+    background:#333;
+    margin:8px;
+    padding:8px;
+    border-radius:8px;
+}
+
+button{
+    margin:5px;
+    padding:8px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
