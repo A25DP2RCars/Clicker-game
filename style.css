@@ -45,3 +45,6 @@ button{
   display:inline-block;
   border-radius:10px;
 }
+body {
+    border: 5px solid red;
+}
