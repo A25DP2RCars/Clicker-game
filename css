@@ -1,71 +1,192 @@
-body {
-  margin: 0;
-  font-family: Arial;
-  background: #111;
-  color: white;
-  text-align: center;
+body{
+
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#1e1e2f,#2b2b45);
+    color:white;
+    text-align:center;
+
 }
 
-#game {
-  display: flex;
-  justify-content: space-between;
+h1{
+
+    margin-top:20px;
+    font-size:40px;
+
 }
 
-#center {
-  flex: 1;
+.topbar{
+
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin:20px;
+    flex-wrap:wrap;
+
 }
 
-#euro {
-  font-size: 140px;
-  cursor: pointer;
-  user-select: none;
+.stat{
+
+    background:#ffffff20;
+    padding:15px 25px;
+    border-radius:15px;
+    box-shadow:0 0 10px #00000050;
+
 }
 
-#euro:active {
-  transform: scale(0.8);
+#euro{
+
+    font-size:70px;
+    cursor:pointer;
+    transition:0.15s;
+    user-select:none;
+
 }
 
-button {
-  margin: 5px;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  background: #333;
-  color: white;
-  cursor: pointer;
+#euro:hover{
+
+    transform:scale(1.1);
+
 }
 
-button:hover {
-  background: #555;
+#euro:active{
+
+    transform:scale(0.9);
+
 }
 
-.car {
-  width: 160px;
-  margin: 10px;
-  filter: drop-shadow(0 10px 10px black);
+.container{
+
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-top:20px;
+    flex-wrap:wrap;
+
 }
 
-.shopItem {
-  background: #222;
-  margin: 8px;
-  padding: 10px;
-  border-radius: 10px;
+.panel{
+
+    width:320px;
+    background:#ffffff15;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 0 15px #00000050;
+
 }
 
-#leftCars, #rightCars {
-  width: 180px;
-  min-height: 100vh;
+.shopItem{
+
+    background:#ffffff10;
+    padding:15px;
+    margin:10px 0;
+    border-radius:15px;
+
 }
 
-#win {
-  display: none;
-  position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:black;
-  color:gold;
-  font-size:40px;
-  padding-top:200px;
+button{
+
+    padding:10px 20px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.2s;
+    margin-top:5px;
+
+}
+
+button:hover{
+
+    transform:scale(1.05);
+
+}
+
+.buyBtn{
+
+    background:gold;
+
+}
+
+.upgradeBtn{
+
+    background:limegreen;
+    color:white;
+
+}
+
+.darkBtn{
+
+    background:#222;
+    color:white;
+
+}
+
+.carArea{
+
+    min-height:250px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    margin-top:20px;
+
+}
+
+.car{
+
+    width:90px;
+    height:50px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:black;
+    font-size:12px;
+    font-weight:bold;
+    animation:float 2s infinite alternate;
+
+}
+
+@keyframes float{
+
+    from{
+
+        transform:translateY(0px);
+
+    }
+
+    to{
+
+        transform:translateY(-10px);
+
+    }
+
+}
+
+.dark{
+
+    background:linear-gradient(135deg,#000,#111);
+
+}
+
+#win{
+
+    display:none;
+    font-size:50px;
+    color:gold;
+    margin-top:30px;
+
+}
+
+.diamondSection{
+
+    margin-top:30px;
+
+}
+
+.winSection{
+
+    margin-top:30px;
+
 }
