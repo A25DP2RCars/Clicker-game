@@ -158,15 +158,46 @@ function update() {
 let quests = [
   {text:"Earn 100€", goal:100, reward:5, type:"money", done:false},
   {text:"Earn 1,000€", goal:1000, reward:10, type:"money", done:false},
-  {text:"Earn 10,000€", goal:10000, reward:20, type:"money", done:false},
-  {text:"Buy 1 car", goal:1, reward:5, type:"cars", done:false},
-  {text:"Buy 3 cars", goal:3, reward:15, type:"cars", done:false},
-  {text:"Buy 5 cars", goal:5, reward:30, type:"cars", done:false},
-  {text:"Get 10 diamonds", goal:10, reward:10, type:"diamonds", done:false},
-  {text:"Get 50 diamonds", goal:50, reward:25, type:"diamonds", done:false},
-  {text:"Reach 100k money", goal:100000, reward:50, type:"money", done:false},
-  {text:"Prestige once", goal:1, reward:100, type:"prestige", done:false}
+  {text:"Buy 1 car", goal:1, reward:5, type:"cars", done:false}
 ];
+
+let carsBought = 0;
+
+function updateQuests(){
+
+    const box = document.getElementById("quest");
+
+    if(!box){
+        console.log("QUEST BOX NOT FOUND");
+        return;
+    }
+
+    box.innerHTML = "";
+
+    quests.forEach(q => {
+
+        let ok = false;
+
+        if(q.type === "money") ok = money >= q.goal;
+        if(q.type === "cars") ok = carsBought >= q.goal;
+
+        if(ok && !q.done){
+            q.done = true;
+            diamonds += q.reward;
+            alert("Quest done! +"+q.reward+" 💎");
+        }
+
+        const div = document.createElement("div");
+        div.className = "shopItem";
+
+        div.innerHTML = `
+            ${q.text}<br>
+            🎁 ${q.reward} 💎 ${q.done ? "DONE" : ""}
+        `;
+
+        box.appendChild(div);
+    });
+}
 function updateQuests(){
 
     const qbox = document.getElementById("quest");
