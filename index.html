@@ -1,108 +1,38 @@
-<!DOCTYPE html>
-<html lang="lv">
-<head>
+<div class="top">
+  <h1>🚗 Tycoon Game</h1>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Car Clicker Tycoon</title>
-
-    <link rel="stylesheet" href="style.css">
-
-</head>
-<body>
-
-<h1>🚗 Car Clicker Tycoon</h1>
-
-<div class="topbar">
-
-    <div class="stat">
-        💰 Money:
-        <span id="money">0</span>
-    </div>
-
-    <div class="stat">
-        💎 Diamonds:
-        <span id="diamonds">0</span>
-    </div>
-
-    <div class="stat">
-        🖱 Clicks:
-        <span id="clicks">0</span>
-    </div>
-
+  <div class="stats">
+    💰 Money: <span id="money">0</span> |
+    💎 Diamonds: <span id="diamonds">0</span> |
+    ⭐ Prestige: <span id="prestige">0</span>
+  </div>
 </div>
 
-<div id="euro">💶</div>
+<div id="euro">💶 CLICK</div>
 
-<br>
-
-<button
-class="upgradeBtn"
-id="upgradeBtn"
-onclick="buyUpgrade()">
-
-Upgrade Click Power
-
-</button>
-
-<button class="darkBtn" onclick="darkMode()">
-    🌙 Dark Mode
-</button>
+<button onclick="buyUpgrade()" id="upgradeBtn">Upgrade (500€)</button>
 
 <div class="container">
 
-    <div class="panel">
+  <div class="panel">
+    <h2>🏪 Shop</h2>
+    <div id="shop"></div>
+  </div>
 
-        <h2>🏪 Car Shop</h2>
+  <div class="panel">
+    <h2>📜 Quests</h2>
+    <div id="quest"></div>
+  </div>
 
-        <div id="shop"></div>
-
-    </div>
-
-    <div class="panel">
-
-        <h2>🚗 Your Cars</h2>
-
-        <div class="carArea" id="cars"></div>
-
-    </div>
-
-</div>
-
-<div class="diamondSection">
-
-    <h2>💎 Buy Diamonds</h2>
-
-    <button onclick="buyDiamonds(1)">
-        1💎 = 50€
-    </button>
-
-    <button onclick="buyDiamonds(5)">
-        5💎 = 400€
-    </button>
-
-    <button onclick="buyDiamonds(10)">
-        10💎 = 1000€
-    </button>
+  <div class="panel">
+    <h2>🚗 Garage</h2>
+    <div id="garage"></div>
+  </div>
 
 </div>
 
-<div class="winSection">
+<button onclick="buyPrestige()">🏆 PRESTIGE RESET</button>
 
-    <button onclick="buyKey()">
-        🔑 Buy Golden Key
-    </button>
-
-</div>
-
-<div id="win">
-
-    🏆 YOU WON THE GAME! 🏆
-
-</div>
+<div id="win" style="display:none;">🏆 YOU WIN!</div>
 
 <script src="script.js"></script>
-
-</body>
-</html>
