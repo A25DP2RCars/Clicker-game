@@ -216,14 +216,14 @@ function buyUpgrade(){
 
 function buyKey(){
 
-    if(money >= 1000000){
+    if(money >= 100000000){
 
         win.style.display = "block";
 
     }
     else{
 
-        alert("Need 1,000,000€!");
+        alert("Need 100,000,000€!");
 
     }
 
