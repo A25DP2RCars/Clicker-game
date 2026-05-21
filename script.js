@@ -70,7 +70,6 @@ function buyCar(type) {
 
         garage.appendChild(div);
 carsBought++;
-updateQuests();
         update();
 
     } else {
@@ -153,7 +152,6 @@ function update() {
 
     const btn = document.getElementById("upgradeBtn");
    if (btn) btn.innerText = `Upgrade (${500 * prestigeMultiplier}€)`;
-    updateQuests();
 }
 let quests = [
   {text:"Earn 100€", goal:100, reward:5, type:"money", done:false},
