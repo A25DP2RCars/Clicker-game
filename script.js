@@ -101,21 +101,21 @@ function buyDiamonds(option){
 
     if(option === 1){
 
-        cost = 100;
+        cost = 50;
         reward = 1;
 
     }
 
     if(option === 5){
 
-        cost = 1000;
+        cost = 400;
         reward = 5;
 
     }
 
     if(option === 10){
 
-        cost = 2500;
+        cost = 700;
         reward = 10;
 
     }
@@ -288,6 +288,8 @@ function loadGame(){
     Number(localStorage.getItem("income")) || 0;
 
 }
+document.getElementById("upgradeBtn").innerText =
+`🚀 Upgrade Click (${upgradePrice}€)`;
 
 setInterval(saveGame,2000);
 
