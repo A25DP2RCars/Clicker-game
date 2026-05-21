@@ -153,7 +153,20 @@ function update() {
     const btn = document.getElementById("upgradeBtn");
     if (btn) btn.innerText = `Upgrade (${500 * prestigeMultiplier}€)`;
 }
+let quests = [
+  {text:"Earn 100€", goal:100, reward:5, type:"money", done:false},
+  {text:"Earn 1,000€", goal:1000, reward:10, type:"money", done:false},
+  {text:"Earn 10,000€", goal:10000, reward:20, type:"money", done:false},
+  {text:"Buy 1 car", goal:1, reward:5, type:"cars", done:false},
+  {text:"Buy 3 cars", goal:3, reward:15, type:"cars", done:false},
+  {text:"Buy 5 cars", goal:5, reward:30, type:"cars", done:false},
+  {text:"Get 10 diamonds", goal:10, reward:10, type:"diamonds", done:false},
+  {text:"Get 50 diamonds", goal:50, reward:25, type:"diamonds", done:false},
+  {text:"Reach 100k money", goal:100000, reward:50, type:"money", done:false},
+  {text:"Prestige once", goal:1, reward:100, type:"prestige", done:false}
+];
 
+let carsBought = 0;
 // 🚀 START
 createShop();
 update();
