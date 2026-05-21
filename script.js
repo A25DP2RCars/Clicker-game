@@ -1,14 +1,26 @@
-let money = 0;
-let diamonds = 0;
 
+let diamonds = 0;
+let money = 0;
 let clickPower = 1;
+
+const euro = document.getElementById("euro");
+
+function update(){
+    console.log("Money:", money);
+}
+
+euro.addEventListener("click", () => {
+    money += clickPower;
+    update();
+});
+
+
 let incomePerSecond = 0;
 
 let upgradePrice = 500;
 let hasKey = false;
 
 // 🧠 DOM
-const euro = document.getElementById("euro");
 const shop = document.getElementById("shop");
 const garage = document.getElementById("cars");
 
@@ -173,10 +185,7 @@ function update() {
 function darkMode() {
     document.body.classList.toggle("dark");
 }
-const euro = document.getElementById("euro");
 
-euro.onclick = () => {
-    money += clickPower;
     update();
 };
 // 🚀 START GAME
