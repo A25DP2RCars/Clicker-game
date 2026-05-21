@@ -70,7 +70,7 @@ function update(){
 function checkLevel(){
 
     let newLevel =
-    Math.floor(money / 1000) + 1;
+    Math.floor(money / 5000) + 1;
 
     if(newLevel > level){
 
