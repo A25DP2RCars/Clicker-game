@@ -1,61 +1,20 @@
-<!DOCTYPE html>
-<html lang="lv">
-<head>
+<!DOCTYPE html> 
+<html lang="lv"> 
+  <head>
 <meta charset="UTF-8">
-<title>PRO TYCOON</title>
-<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<h1>🚗 PRO TYCOON</h1>
-
-<div class="stats">
-  💰 Money: <span id="money">0</span> |
-  💎 Diamonds: <span id="diamonds">0</span> |
-  🏆 Prestige: <span id="prestige">0</span>
-</div>
-
-<div id="euro">💶 CLICK</div>
-
-<button id="upgradeBtn" onclick="buyUpgrade()">Upgrade</button>
-<button onclick="buyPrestige()">🏆 PRESTIGE</button>
-
-<div class="container">
-
-  <div class="box">
-    <h2>🏪 Car Shop</h2>
-    <div id="shop"></div>
-  </div>
-
-  <div class="box">
-    <h2>💎 Diamond Shop</h2>
-
-    <button onclick="buyDiamonds(1)">1 💎 = 50€</button>
-    <button onclick="buyDiamonds(5)">5 💎 = 400€</button>
-    <button onclick="buyDiamonds(10)">10 💎 = 700€</button>
-
-  </div>
-
-  <div class="box">
-    <h2>🚗 Garage</h2>
-    <div id="garage"></div>
-  </div>
-<div class="box scroll">
-  <h2>📜 Quests</h2>
-  <div id="quest"></div>
-</div>
-</div>
-  <div id="questComplete" class="hidden">
-  🏆 ALL QUESTS COMPLETED!
-</div>
-  <div id="prestigeNeed"></div>
-
-<audio id="winSound">
-  <source src="https://www.myinstants.com/media/sounds/success-fanfare-trumpets.mp3" type="audio/mpeg">
-</audio>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+    <title>PRO TYCOON</title> 
+    <link rel="stylesheet" href="style.css"> 
+  </head> 
+  <body> 
+    <h1>🚗 PRO TYCOON</h1> 
+    <div class="stats"> 💰 Money: <span id="money">0</span> 
+      | 💎 Diamonds: <span id="diamonds">0</span> 
+      | 🏆 Prestige: <span id="prestige">0</span> 
+    </div> 
+    <div id="euro">💶 CLICK</div> 
+    <button id="upgradeBtn" onclick="buyUpgrade()">Upgrade</button> 
+    <button onclick="buyPrestige()">🏆 PRESTIGE</button> 
+    <div class="container"> <div class="box"> 
+      <h2>🏪 Car Shop</h2> 
+      <div id="shop"></div> 
+    </div> <div class="box"> <h2>💎 Diamond Shop</h2> <button onclick="buyDiamonds(1)">1 💎 = 50€</button> <button onclick="buyDiamonds(5)">5 💎 = 400€</button> <button onclick="buyDiamonds(10)">10 💎 = 700€</button> </div> <div class="box"> <h2>🚗 Garage</h2> <div id="garage"></div> </div> <div class="box scroll"> <h2>📜 Quests</h2> <div id="quest"></div> </div> </div> <div id="questComplete" class="hidden"> 🏆 ALL QUESTS COMPLETED! </div> <audio id="winSound"> <source src="https://www.myinstants.com/media/sounds/success-fanfare-trumpets.mp3" type="audio/mpeg"> </audio> <script src="script.js"></script> </body> </html>
