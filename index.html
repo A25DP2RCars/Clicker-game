@@ -8,59 +8,79 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+    
+<!-- Fona animācija (zvaigznes kosmosā) -->
 <div class="stars"></div>
-
+    
+<!-- Galvenais spēles konteiners -->
 <div id="game">
 
+    <!-- Kreisā puse: spēle + statistika -->
     <div id="left">
 
+        <!-- Spēles virsraksts -->
         <h1>GALAXY CORE</h1>
 
+        <!-- Planētas klikšķināšanas zona -->
         <div id="planet-container">
+
+            <!-- Planēta, uz kuras spēlētājs klikšķina -->
             <div id="planet"></div>
+            
         </div>
 
+        <!-- Rāda kopējo enerģiju -->
         <h2 id="energy">⚡ Enerģija: 0</h2>
 
+        <!-- Rāda cik enerģijas nāk automātiski sekundē -->
         <h3 id="perSecond">+0/sec</h3>
 
     </div>
 
+     <!-- Labā puse: veikals (upgrades) -->
     <div id="right">
 
+         <!-- Veikala virsraksts -->
         <h2>SHOP</h2>
 
+       <!-- Upgrade: Drone -->
         <button onclick="buyItem('drone')">
             🤖 Drone
+           <!-- cik dod sekundē -->
             <span>+1/sec</span>
+             <!-- cena -->
             <b id="droneCost">10</b>
         </button>
 
+       <!-- Upgrade: Miner -->
         <button onclick="buyItem('miner')">
             ⛏️ Miner
             <span>+5/sec</span>
             <b id="minerCost">50</b>
         </button>
 
+       <!-- Upgrade: Factory -->
         <button onclick="buyItem('factory')">
             🏭 Factory
             <span>+20/sec</span>
             <b id="factoryCost">250</b>
         </button>
 
+        <!-- Upgrade: Reactor -->
         <button onclick="buyItem('reactor')">
             ☢️ Reactor
             <span>+100/sec</span>
             <b id="reactorCost">1000</b>
         </button>
 
+        <!-- Upgrade: AI Core -->
         <button onclick="buyItem('ai')">
             🧠 AI Core
             <span>+500/sec</span>
             <b id="aiCost">5000</b>
         </button>
 
+       <!-- Upgrade: Galaxy Engine -->
         <button onclick="buyItem('galaxy')">
             🌌 Galaxy Engine
             <span>+2500/sec</span>
@@ -71,6 +91,7 @@
 
 </div>
 
-<script src="script.js"></script>
+<!-- Pievieno JavaScript spēles loģiku -->
+    <script src="script.js"></script>
 </body>
 </html>
