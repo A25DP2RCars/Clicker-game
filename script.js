@@ -1,15 +1,21 @@
+// Atrodam planētas elementu HTML (uz tā klikšķinās)
 const planet = document.getElementById("planet");
 
+// Atrodam tekstu, kur rāda enerģiju
 const energyText =
 document.getElementById("energy");
 
+// Atrodam tekstu, kur rāda cik /sec iegūst
 const perSecondText =
 document.getElementById("perSecond");
 
+// Spēlētāja enerģija (galvenais resurss)
 let energy = 0;
 
+// Cik enerģijas automātiski nāk sekundē
 let perSecond = 0;
 
+// Upgrade sistēma (visi pirkumi)
 const items = {
 
     drone:{
@@ -43,6 +49,7 @@ const items = {
     }
 };
 
+// Kad uzspiež uz planētas
 planet.addEventListener("click",()=>{
 
     energy += 1;
@@ -51,6 +58,7 @@ planet.addEventListener("click",()=>{
 
     updateUI();
 
+   // mazs "click" animācijas efekts
     planet.style.transform = "scale(0.93)";
 
     setTimeout(()=>{
@@ -60,23 +68,27 @@ planet.addEventListener("click",()=>{
     },80);
 });
 
+
+// Funkcija upgrade pirkšanai
 function buyItem(name){
 
-    const item = items[name];
+    const item = items[name]; // paņem konkrēto upgrade
 
+   // pārbauda vai pietiek naudas
     if(energy >= item.cost){
 
-        energy -= item.cost;
+        energy -= item.cost; // atņem enerģiju
 
-        perSecond += item.gain;
+        perSecond += item.gain; // palielina ienākumu
 
-        item.cost =
-        Math.floor(item.cost * 1.6);
+        // nākamreiz kļūst dārgāks
+        item.cost = Math.floor(item.cost * 1.6);
 
-        updateUI();
+        updateUI(); // atjauno ekrānu
     }
 }
 
+// Atjauno visu tekstu UI
 function updateUI(){
 
     energyText.innerText =
@@ -85,6 +97,7 @@ function updateUI(){
     perSecondText.innerText =
     `+${perSecond}/sec`;
 
+    // atjauno shop cenas
     document.getElementById("droneCost")
     .innerText = items.drone.cost;
 
@@ -104,6 +117,7 @@ function updateUI(){
     .innerText = items.galaxy.cost;
 }
 
+// Automātiska enerģijas pievienošana katru sekundi
 setInterval(()=>{
 
     energy += perSecond;
@@ -112,8 +126,10 @@ setInterval(()=>{
 
 },1000);
 
+// Izveido "+1" peldošu efektu
 function createParticle(){
 
+    
     const particle =
     document.createElement("div");
 
@@ -121,9 +137,11 @@ function createParticle(){
 
     document.body.appendChild(particle);
 
+    // atrod planētas pozīciju
     const rect =
     planet.getBoundingClientRect();
 
+    // sākuma pozīcija (planētas centrs)
     particle.style.left =
     rect.left + rect.width/2 + "px";
 
@@ -132,12 +150,14 @@ function createParticle(){
 
     particle.innerText = "+1";
 
+   // random kustība
     const x =
     (Math.random()-0.5)*120;
 
     const y =
     -100 - Math.random()*50;
 
+    // animācija
     particle.animate([
 
         {
@@ -157,6 +177,7 @@ function createParticle(){
         duration:1000
     });
 
+    // pēc 1s izdzēš elementu
     setTimeout(()=>{
 
         particle.remove();
@@ -164,6 +185,7 @@ function createParticle(){
     },1000);
 }
 
+// pievieno CSS dinamisku "particle" stilam
 const style =
 document.createElement("style");
 
@@ -186,4 +208,5 @@ style.innerHTML = `
 
 document.head.appendChild(style);
 
+// sākumā uzreiz atjauno UI
 updateUI();
