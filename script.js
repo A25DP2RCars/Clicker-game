@@ -1,267 +1,189 @@
-let money = 0;
-let diamonds = 0;
+const planet = document.getElementById("planet");
 
-let clickPower = 1;
-let income = 0;
+const energyText =
+document.getElementById("energy");
 
-let prestige = 0;
-let prestigeNeed = 100000;
-let prestigeMultiplier = 1;
+const perSecondText =
+document.getElementById("perSecond");
 
-// DOM
-const euro = document.getElementById("euro");
-const shop = document.getElementById("shop");
-const garage = document.getElementById("garage");
+let energy = 0;
 
-// 🚗 CARS
-const cars = {
-    rust: { price: 1, income: 10, color: "brown" },
-    audi: { price: 5, income: 50, color: "silver" },
-    bmw: { price: 10, income: 200, color: "blue" },
-    porsche: { price: 20, income: 1000, color: "yellow" },
-    lambo: { price: 50, income: 10000, color: "lime" },
-    pagani: { price: 100, income: 100000, color: "purple" }
+let perSecond = 0;
+
+const items = {
+
+    drone:{
+        cost:10,
+        gain:1
+    },
+
+    miner:{
+        cost:50,
+        gain:5
+    },
+
+    factory:{
+        cost:250,
+        gain:20
+    },
+
+    reactor:{
+        cost:1000,
+        gain:100
+    },
+
+    ai:{
+        cost:5000,
+        gain:500
+    },
+
+    galaxy:{
+        cost:25000,
+        gain:2500
+    }
 };
 
-// 🖱 CLICK
-euro.onclick = () => {
-    money += clickPower * prestigeMultiplier;
-    update();
-};
+planet.addEventListener("click",()=>{
 
-// 🏪 SHOP
-function createShop() {
+    energy += 1;
 
-    shop.innerHTML = "";
+    createParticle();
 
-    for (let key in cars) {
+    updateUI();
 
-        const c = cars[key];
+    planet.style.transform = "scale(0.93)";
 
-        const div = document.createElement("div");
-        div.className = "shopItem";
+    setTimeout(()=>{
 
-        div.innerHTML = `
-            <h3>${key.toUpperCase()}</h3>
-            <p>💎 ${c.price}</p>
-            <p>💰 ${c.income}/s</p>
-            <button onclick="buyCar('${key}')">BUY</button>
-        `;
+        planet.style.transform = "scale(1)";
 
-        shop.appendChild(div);
+    },80);
+});
+
+function buyItem(name){
+
+    const item = items[name];
+
+    if(energy >= item.cost){
+
+        energy -= item.cost;
+
+        perSecond += item.gain;
+
+        item.cost =
+        Math.floor(item.cost * 1.6);
+
+        updateUI();
     }
 }
 
-// 🚗 BUY CAR
-function buyCar(type) {
+function updateUI(){
 
-    const car = cars[type];
+    energyText.innerText =
+    `⚡ Enerģija: ${Math.floor(energy)}`;
 
-    if (diamonds >= car.price) {
+    perSecondText.innerText =
+    `+${perSecond}/sec`;
 
-        diamonds -= car.price;
+    document.getElementById("droneCost")
+    .innerText = items.drone.cost;
 
-        income += car.income * prestigeMultiplier;
+    document.getElementById("minerCost")
+    .innerText = items.miner.cost;
 
-        const div = document.createElement("div");
-        div.className = "car";
-        div.style.background = car.color;
-        div.innerText = type.toUpperCase();
+    document.getElementById("factoryCost")
+    .innerText = items.factory.cost;
 
-        garage.appendChild(div);
-carsBought++;
-updateQuests();
-        update();
+    document.getElementById("reactorCost")
+    .innerText = items.reactor.cost;
 
-    } else {
-        alert("Nepietiek dimantu!");
-    }
+    document.getElementById("aiCost")
+    .innerText = items.ai.cost;
+
+    document.getElementById("galaxyCost")
+    .innerText = items.galaxy.cost;
 }
 
-// 💎 BUY DIAMONDS
-function buyDiamonds(option) {
+setInterval(()=>{
 
-    let cost = 0;
-    let reward = 0;
+    energy += perSecond;
 
-    if (option === 1) { cost = 50; reward = 1; }
-    if (option === 5) { cost = 400; reward = 5; }
-    if (option === 10) { cost = 700; reward = 10; }
+    updateUI();
 
-    if (money >= cost) {
-        money -= cost;
-        diamonds += reward;
-        update();
-    } else {
-        alert("Nepietiek naudas!");
-    }
-}
+},1000);
 
-// 🚀 UPGRADE CLICK
-function buyUpgrade() {
+function createParticle(){
 
-    let cost = 500 * prestigeMultiplier;
+    const particle =
+    document.createElement("div");
 
-    if (money >= cost) {
+    particle.classList.add("particle");
 
-        money -= cost;
-        clickPower *= 2;
+    document.body.appendChild(particle);
 
-        update();
+    const rect =
+    planet.getBoundingClientRect();
 
-    } else {
-        alert("Nepietiek naudas!");
-    }
-}
+    particle.style.left =
+    rect.left + rect.width/2 + "px";
 
-// 🏆 PRESTIGE
-function buyPrestige() {
+    particle.style.top =
+    rect.top + rect.height/2 + "px";
 
-    if (money >= prestigeNeed) {
+    particle.innerText = "+1";
 
-        prestige++;
-        money = 0;
-        diamonds = 0;
-        income = 0;
-        clickPower = 1;
+    const x =
+    (Math.random()-0.5)*120;
 
-        prestigeMultiplier *= 2;
-        prestigeNeed *= 2;
+    const y =
+    -100 - Math.random()*50;
 
-        update();
+    particle.animate([
 
-        alert("🏆 PRESTIGE DONE!");
+        {
+            transform:"translate(0,0)",
+            opacity:1
+        },
 
-    } else {
-        alert("Nepietiek naudas!");
-    }
-}
+        {
+            transform:
+            `translate(${x}px,${y}px)`,
 
-// 💰 PASSIVE INCOME
-setInterval(() => {
-    money += income;
-    update();
-}, 1000);
-
-// 🔄 UPDATE UI
-function update() {
-
-    document.getElementById("money").innerText = Math.floor(money);
-    document.getElementById("diamonds").innerText = diamonds;
-    document.getElementById("prestige").innerText = prestige;
-    document.getElementById("prestigeNeed").innerText = prestigeNeed;
-
-    const btn = document.getElementById("upgradeBtn");
-   if (btn) btn.innerText = `Upgrade (${500 * prestigeMultiplier}€)`;
-    updateQuests();
-}
-let quests = [
-  {text:"Earn 100€", goal:100, reward:5, type:"money", done:false},
-  {text:"Earn 1,000€", goal:1000, reward:10, type:"money", done:false},
-  {text:"Buy 1 car", goal:1, reward:5, type:"cars", done:false}
-];
-
-let carsBought = 0;
-
-function updateQuests(){
-
-    const box = document.getElementById("quest");
-
-    if(!box){
-        console.log("QUEST BOX NOT FOUND");
-        return;
-    }
-
-    box.innerHTML = "";
-
-    quests.forEach(q => {
-
-        let ok = false;
-
-        if(q.type === "money") ok = money >= q.goal;
-        if(q.type === "cars") ok = carsBought >= q.goal;
-
-        if(ok && !q.done){
-            q.done = true;
-            diamonds += q.reward;
-            alert("Quest done! +"+q.reward+" 💎");
+            opacity:0
         }
 
-        const div = document.createElement("div");
-        div.className = "shopItem";
+    ],{
 
-        div.innerHTML = `
-            ${q.text}<br>
-            🎁 ${q.reward} 💎 ${q.done ? "DONE" : ""}
-        `;
-
-        box.appendChild(div);
+        duration:1000
     });
+
+    setTimeout(()=>{
+
+        particle.remove();
+
+    },1000);
 }
-function updateQuests(){
 
-    const qbox = document.getElementById("quest");
-    qbox.innerHTML = "";
+const style =
+document.createElement("style");
 
-    quests.forEach(q => {
+style.innerHTML = `
+.particle{
 
-        let progress = false;
+    position:absolute;
 
-        if(q.type === "money") progress = money >= q.goal;
-        if(q.type === "diamonds") progress = diamonds >= q.goal;
-        if(q.type === "cars") progress = carsBought >= q.goal;
-        if(q.type === "prestige") progress = prestige >= q.goal;
+    color:#6ee7ff;
 
-        if(progress && !q.done){
-            q.done = true;
+    font-weight:bold;
 
-            diamonds += q.reward;
-            alert("Quest completed! +"+q.reward+" 💎");
-        }
+    pointer-events:none;
 
-        let div = document.createElement("div");
-        div.className = "shopItem";
+    z-index:999;
 
-        div.innerHTML = `
-            ${q.text}<br>
-            🎁 ${q.reward} 💎 ${q.done ? "✅ DONE" : ""}
-        `;
-
-        qbox.appendChild(div);
-    });
+    text-shadow:0 0 10px #6ee7ff;
 }
-let carsBought = 0;
-let rewardPlayed = false;
+`;
 
-function checkAllQuests(){
+document.head.appendChild(style);
 
-    let allDone = quests.every(q => q.done);
-
-    if(allDone && !rewardPlayed){
-
-        rewardPlayed = true;
-
-        // SOUND
-        document.getElementById("winSound").play();
-
-        // ANIMATION TEXT
-        let box = document.getElementById("questComplete");
-        box.style.display = "block";
-
-        // SCREEN FLASH
-        document.body.classList.add("flash");
-
-        setTimeout(()=>{
-            document.body.classList.remove("flash");
-        },1000);
-
-        setTimeout(()=>{
-            box.style.display = "none";
-        },3000);
-    }
-}
-// 🚀 START
-updateQuests();
-createShop();
-update();
-checkAllQuests();
+updateUI();
