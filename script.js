@@ -69,13 +69,12 @@ function buyCar(type) {
         div.innerText = type.toUpperCase();
 
         garage.appendChild(div);
-       
-        updateQuests();
-checkAllQuests();
+carsBought++;
+updateQuests();
         update();
 
     } else {
-         showPopup("🚗 Car bought!");
+        alert("Nepietiek dimantu!");
     }
 }
 
@@ -94,7 +93,7 @@ function buyDiamonds(option) {
         diamonds += reward;
         update();
     } else {
-        showPopup("+5 💎 Diamonds", "deepskyblue");
+        alert("Nepietiek naudas!");
     }
 }
 
@@ -131,10 +130,10 @@ function buyPrestige() {
 
         update();
 
-        showPopup("🏆 PRESTIGE ACTIVATED!", "gold");
+        alert("🏆 PRESTIGE DONE!");
 
     } else {
-        showPopup("Nepietiek naudas");
+        alert("Nepietiek naudas!");
     }
 }
 
@@ -154,6 +153,7 @@ function update() {
 
     const btn = document.getElementById("upgradeBtn");
    if (btn) btn.innerText = `Upgrade (${500 * prestigeMultiplier}€)`;
+    updateQuests();
 }
 let quests = [
   {text:"Earn 100€", goal:100, reward:5, type:"money", done:false},
@@ -259,17 +259,6 @@ function checkAllQuests(){
             box.style.display = "none";
         },3000);
     }
-}
-function showPopup(text, color = "gold") {
-    const box = document.getElementById("questComplete");
-
-    box.innerText = text;
-    box.style.background = color;
-    box.style.display = "block";
-
-    setTimeout(() => {
-        box.style.display = "none";
-    }, 2000);
 }
 // 🚀 START
 updateQuests();
