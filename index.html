@@ -1,41 +1,76 @@
-<!DOCTYPE html> 
-<html lang="lv"> 
-  <head>
-<meta charset="UTF-8">
-    <title>PRO TYCOON</title> 
-    <link rel="stylesheet" href="style.css"> 
-  </head> 
-  <body> 
-    <h1>🚗 PRO TYCOON</h1> 
-    <div class="stats"> 💰 Money: <span id="money">0</span> 
-      | 💎 Diamonds: <span id="diamonds">0</span> 
-      | 🏆 Prestige: <span id="prestige">0</span> 
-    </div> 
-    <div id="euro">💶 CLICK</div> 
-    <button id="upgradeBtn" onclick="buyUpgrade()">Upgrade</button> 
-    <button onclick="buyPrestige()">🏆 PRESTIGE</button> 
-    <div class="container"> <div class="box"> 
-      <h2>🏪 Car Shop</h2> 
-      <div id="shop"></div> 
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Core Clicker</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="stars"></div>
+
+<div id="game">
+
+    <div id="left">
+
+        <h1>GALAXY CORE</h1>
+
+        <div id="planet-container">
+            <div id="planet"></div>
+        </div>
+
+        <h2 id="energy">⚡ Enerģija: 0</h2>
+
+        <h3 id="perSecond">+0/sec</h3>
+
     </div>
-      <div class="box"> 
-        <h2>💎 Diamond Shop</h2
-      <button onclick="buyDiamonds(1)">1 💎 = 50€</button>
-        <button onclick="buyDiamonds(5)">5 💎 = 400€</button>
-        <button onclick="buyDiamonds(10)">10 💎 = 700€</button>
-      </div>
-      <div class="box">
-        <h2>🚗 Garage</h2> 
-        <div id="garage"></div>
-      </div>
-      <div class="box scroll"> 
-        <h2>📜 Quests</h2>
-        <div id="quest"></div> 
-      </div>
+
+    <div id="right">
+
+        <h2>SHOP</h2>
+
+        <button onclick="buyItem('drone')">
+            🤖 Drone
+            <span>+1/sec</span>
+            <b id="droneCost">10</b>
+        </button>
+
+        <button onclick="buyItem('miner')">
+            ⛏️ Miner
+            <span>+5/sec</span>
+            <b id="minerCost">50</b>
+        </button>
+
+        <button onclick="buyItem('factory')">
+            🏭 Factory
+            <span>+20/sec</span>
+            <b id="factoryCost">250</b>
+        </button>
+
+        <button onclick="buyItem('reactor')">
+            ☢️ Reactor
+            <span>+100/sec</span>
+            <b id="reactorCost">1000</b>
+        </button>
+
+        <button onclick="buyItem('ai')">
+            🧠 AI Core
+            <span>+500/sec</span>
+            <b id="aiCost">5000</b>
+        </button>
+
+        <button onclick="buyItem('galaxy')">
+            🌌 Galaxy Engine
+            <span>+2500/sec</span>
+            <b id="galaxyCost">25000</b>
+        </button>
+
     </div>
-    <div id="questComplete" class="hidden"> 🏆 ALL QUESTS COMPLETED! </div>
-    <audio id="winSound"> 
-      <source src="https://www.myinstants.com/media/sounds/success-fanfare-trumpets.mp3" type="audio/mpeg"> </audio> 
-    <script src="script.js"></script>
-  </body> 
+
+</div>
+
+<script src="script.js"></script>
+</body>
 </html>
